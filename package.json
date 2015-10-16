@@ -1,0 +1,24 @@
+{
+  "name": "map-item-filter",
+  "version": "1.0.0",
+  "title": "Map Item Filter",
+  "description": "POC of a SPA that can be used for filtering items by categories and/or by zooming and panning in a map",
+  "private": true,
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "browserify scripts/index.js -t babelify > dist/script.js",
+    "build:css": "node-sass stylesheets/*.scss dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/jonathanp_/map-item-filter.git"
+  },
+  "author": "Jonathan Persson <persson.jonathan@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "node-sass": "^3.3.3"
+  }
+}

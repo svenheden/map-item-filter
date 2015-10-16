@@ -1,0 +1,49 @@
+.filter-button {
+    $gutter: 10px;
+
+    background: $white;
+    border: 0;
+    float: left;
+    width: calc(50% - #{$gutter});
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:nth-child(odd) {
+        margin-right: $gutter;
+    }
+
+    &:nth-child(even) {
+        margin-left: $gutter;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.filter-button--active {
+    background: $lightBlue;
+    position: relative;
+
+    // the checkbox
+    &:after {
+        content: "\2714";
+        background: $pink;
+        color: $white;
+        border-radius: 50%;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.5em;
+        text-align: center;
+        font-weight: 400;
+    }
+}

@@ -1,0 +1,29 @@
+.pill {
+    border: 0;
+    background: $lightBlue;
+    padding: 4px 22px 4px 8px; // the large right padding is to compensate for the "X"
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: inherit;
+    font-family: inherit;
+    position: relative;
+    line-height: 1;
+
+    // the "X"
+    &:after {
+        content: "\00d7";
+        color: $darkBlue;
+        font-size: 1.5em;
+        padding: 0;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 5px;
+    }
+
+    &:hover,
+    &:focus {
+        background: $lightBlueHover;
+    }
+}

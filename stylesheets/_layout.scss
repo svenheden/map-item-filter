@@ -1,0 +1,51 @@
+$listWidth: 500px;
+$navHeight: 54px;
+
+body {
+    height: calc(100vh - #{$navHeight});
+}
+
+nav {
+    height: $navHeight;
+}
+
+.map-container {
+    background: $grey;
+    width: calc(100% - #{$listWidth});
+    height: 100%;
+    float: left;
+    position: relative;
+
+    // the inner shadow
+    &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: rgba(0,0,0,.1) -7px 0 0 0 inset;
+        pointer-events: none;
+    }
+}
+
+.list-container {
+    background: $grey;
+    width: $listWidth;
+    height: 100%;
+    float: right;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+
+    iframe {
+        display: block;
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

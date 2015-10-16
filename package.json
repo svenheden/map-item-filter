@@ -7,8 +7,9 @@
   "main": "index.html",
   "scripts": {
     "build": "npm run build:js && npm run build:css",
-    "build:js": "browserify scripts/index.js -t babelify > dist/script.js",
-    "build:css": "node-sass stylesheets/*.scss dist/style.css"
+    "build:js": "browserify scripts/index.js -t babelify -o dist/script.js",
+    "build:css": "node-sass stylesheets -o dist",
+    "watch:css": "node-sass stylesheets -o dist -w"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,30 @@
+.category-filter {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: $blue;
+    border-top: 4px solid $darkBlue;
+    text-align: right;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.category-filter__item {
+    display: inline-block;
+}
+
+.category-filter__link {
+    box-sizing: border-box;
+    height: 50px;
+    padding: 15px 10px 17px; // 4px difference in top and bottom padding to compensate for the border on .category-filter
+    text-decoration: none;
+    display: inline-block;
+    color: $white;
+    font-weight: 600;
+    font-size: 15px;
+
+    &:hover,
+    &:focus {
+        background: $darkBlue;
+    }
+}

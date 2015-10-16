@@ -13,11 +13,11 @@ The goal of this project is for me to try to recreate the core of an app I wrote
 * [Sass](http://sass-lang.com/)
 * [CSS Modules](https://github.com/css-modules/css-modules)
 
-## Build instructions
+## How to build
 
 1. Clone this repo
 2. Install the required dependencies with `npm install`
-3. Hit `npm run build` to build the front end assets
+3. Run `npm run build` to build the front end assets
 4. Open index.html in your favorite browser
 
 ## License

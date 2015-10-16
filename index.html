@@ -7,17 +7,181 @@
         <link rel="stylesheet" href="dist/style.css">
     </head>
     <body>
-        <main>
-            <nav>
-                <ul class="category-filter">
-                    <li><a href="#" class="category-filter__link">Alla enheter</a></li>
-                    <li><a href="#" class="category-filter__link">Primärvård</a></li>
-                    <li><a href="#" class="category-filter__link">Psykiatri</a></li>
-                    <li><a href="#" class="category-filter__link">Specialistvård</a></li>
-                    <li><a href="#" class="category-filter__link">Akutvård</a></li>
-                </ul>
-            </nav>
-        </main>
+        <nav>
+            <ul class="category-filter">
+                <li class="category-filter__item">
+                    <a href="#" class="category-filter__link">Alla enheter</a>
+                </li>
+                <li class="category-filter__item">
+                    <a href="#" class="category-filter__link">Primärvård</a>
+                </li>
+                <li class="category-filter__item">
+                    <a href="#" class="category-filter__link">Psykiatri</a>
+                </li>
+                <li class="category-filter__item">
+                    <a href="#" class="category-filter__link">Specialistvård</a>
+                </li>
+                <li class="category-filter__item">
+                    <a href="#" class="category-filter__link">Akutvård</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="map-container">
+            <div class="filter-summary">
+                Visar 19 träffar på <button type="button" class="pill">Specialistpsykiatrisk</button> öppenvård inom <button type="button" class="pill">Psykiatri</button>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed/v1/search?key=AIzaSyABubpkzgcRb-HlmzjehGJnlx6Qig8rnFc&q=record+stores+in+Seattle"></iframe>
+            </div>
+        </div>
+
+        <div class="list-container">
+            <div id="foobar" class="sub-category-filter">
+                <div class="sub-category-filter__inner">
+                    <div class="button-group">
+                        <button type="button" class="filter-button" onclick="this.classList.toggle('filter-button--active')">Visa all primärvård</button>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="filter-button" onclick="this.classList.toggle('filter-button--active')">Lorem</button>
+                        <button type="button" class="filter-button" onclick="this.classList.toggle('filter-button--active')">Ispum</button>
+                        <button type="button" class="filter-button" onclick="this.classList.toggle('filter-button--active')">Foo</button>
+                        <button type="button" class="filter-button" onclick="this.classList.toggle('filter-button--active')">Bar</button>
+                    </div>
+                </div>
+                <button type="button" class="sub-category-filter__toggler" onclick="document.getElementById('foobar').classList.toggle('sub-category-filter--visible')">Visa filtrering</button>
+            </div>
+
+            <ol class="item-list">
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-list__item">
+                    <div class="item">
+                        <h3 class="item__heading">Capio Anorexi Center Malmö</h3>
+                        <div class="item__column">
+                            <strong>Adress</strong>
+                            <span>Västergatan 38</span>
+                            <span>211 21 Malmö</span>
+                        </div>
+                        <div class="item__column">
+                            <strong>Telefonnummer</strong>
+                            <span>040-35 00 30</span>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
 
         <script src="dist/script.js"></script>
     </body>

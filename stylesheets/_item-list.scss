@@ -1,0 +1,10 @@
+.item-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.item-list__item {
+    background: $white;
+    border-bottom: 3px solid $grey;
+}

@@ -1,0 +1,15 @@
+.button-group {
+    margin: 15px;
+
+    // clearfix
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+.button-group + .button-group {
+    border-top: 1px solid $white;
+    padding-top: 15px;
+}

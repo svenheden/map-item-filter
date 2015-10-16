@@ -1,0 +1,33 @@
+.sub-category-filter__inner {
+    background: $grey;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .25s;
+
+    .sub-category-filter--visible & {
+        max-height: 400px;
+    }
+}
+
+.sub-category-filter__toggler {
+    border: 0;
+    width: 100%;
+    padding: 15px;
+    background: $lightBlue;
+    font-size: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:after {
+        content: "\25be";
+        margin-left: .5em;
+
+        .sub-category-filter--visible & {
+            content: "\25b4";
+        }
+    }
+}

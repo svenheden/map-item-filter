@@ -1,0 +1,19 @@
+.item {
+    overflow: hidden; // clearfix
+    padding: 15px;
+    font-size: 14px;
+}
+
+.item__heading {
+    margin-top: 0;
+}
+
+.item__column {
+    float: left;
+    width: 50%;
+
+    > strong,
+    > span {
+        display: block;
+    }
+}

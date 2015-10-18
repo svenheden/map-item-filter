@@ -9,6 +9,7 @@
     "build": "npm run build:js && npm run build:css",
     "build:js": "browserify scripts/index.js -t babelify -o dist/script.js",
     "build:css": "node-sass stylesheets -o dist",
+    "watch:js": "watchify scripts/index.js -t babelify -o dist/script.js",
     "watch:css": "node-sass stylesheets -o dist -w"
   },
   "repository": {
@@ -20,6 +21,11 @@
   "devDependencies": {
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
-    "node-sass": "^3.3.3"
+    "node-sass": "^3.3.3",
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   }
 }

@@ -1,7 +1,7 @@
 $listWidth: 500px;
 $navHeight: 54px;
 
-body {
+main {
     height: calc(100vh - #{$navHeight});
 }
 

@@ -3,14 +3,33 @@ import Pill from '../components/pill';
 
 export default class FilterSummary extends Component {
   render() {
-    const results = `Visar ${this.props.numberOfItems} ${this.props.numberOfItems === 1 ? 'träff' : 'träffar'} på `;
+    const matches = this.props.numberOfItems + (this.props.numberOfItems === 1 ? ' träff' : ' träffar');
+    const hasBothCategoriesAndSubCategories = this.props.category && (this.props.subCategories.length > 0);
 
     return (
       <div className="filter-summary">
-        {results}
-        <Pill id={2} label="Specialistpsykiatrisk"/>
-        {' inom '}
-        <Pill id={3} label="Psykiatri"/>
+        Visar {matches} på {' '}
+        {this.props.subCategories.map(subCategory =>
+          <Pill
+            key={subCategory.id}
+            id={subCategory.id}
+            label={subCategory.label}
+            tooltip={`Ta bort ${subCategory.label} från filtreringen`}
+            onClick={() => this.props.onClickSubCategory(subCategory.id)}
+          />
+        )}
+        {hasBothCategoriesAndSubCategories && ' inom ' }
+        {this.props.category &&
+          <Pill
+            id={this.props.category.id}
+            label={this.props.category.label}
+            tooltip={`Ta bort ${this.props.category.label} från filtreringen`}
+            onClick={() => this.props.onClickCategory()}
+          />
+        }
+        {!this.props.category &&
+          ' alla enheter'
+        }
       </div>
     );
   }
@@ -24,5 +43,7 @@ const categoryShape = PropTypes.shape({
 FilterSummary.propTypes = {
   category: categoryShape,
   subCategories: PropTypes.arrayOf(categoryShape),
-  numberOfItems: PropTypes.number.isRequired
+  numberOfItems: PropTypes.number.isRequired,
+  onClickCategory: PropTypes.func.isRequired,
+  onClickSubCategory: PropTypes.func.isRequired
 };

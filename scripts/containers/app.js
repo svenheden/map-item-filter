@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setCategoryFilter } from '../actions';
+import { selectCategory } from '../selectors';
 import CategoryFilter from '../components/category-filter';
 import MapContainer from '../containers/map';
 import ListContainer from '../containers/list';
 
-import * as test from '../testdata';
-
-export default class App extends Component {
+class App extends Component {
   render() {
+    const { dispatch, categories, currentCategory } = this.props;
+
     return (
       <main>
         <nav>
-          <CategoryFilter categories={test.categories} current={test.currentCategory}/>
+          <CategoryFilter
+            categories={categories}
+            current={currentCategory}
+            onClick={id => dispatch(setCategoryFilter(id))}
+          />
         </nav>
-        <MapContainer category={test.currentCategory} subCategories={test.subCategories} items={test.items}/>
-        <ListContainer category={test.currentCategory} subCategories={test.subCategories} items={test.items}/>
+        <MapContainer/>
+        <ListContainer/>
       </main>
     );
   }
 }
+
+function select(state) {
+  return {
+    categories: state.allCategories,
+    currentCategory: selectCategory(state.allCategories, state.categoryFilter)
+  };
+}
+
+export default connect(select)(App);

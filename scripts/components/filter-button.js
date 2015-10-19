@@ -1,34 +1,39 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class FilterButton extends Component {
-  // @todo remove state. it's only here temporary to be able to test the GUI
-  constructor() {
-    super();
-
-    this.state = {
-      active: false
-    };
-  }
-
-  toggle() {
-    this.setState({
-      active: !this.state.active
-    });
-  }
-
   render() {
-    const classes = 'filter-button' + (this.state.active ? ' filter-button--active' : '');
+    let classes = 'filter-button';
+
+    if (this.props.active) {
+      classes += ' filter-button--active';
+    }
+
+    if (this.props.disabled) {
+      classes += ' filter-button--disabled';
+    }
 
     return (
-      <button type="button" className={classes} onClick={this.toggle.bind(this)}>{this.props.label}</button>
+      <button
+        type="button"
+        className={classes}
+        onClick={this.handleClick.bind(this)}
+      >{this.props.label}</button>
     );
+  }
+
+  handleClick() {
+    if (!this.props.disabled) {
+      this.props.onClick(this.props.id, this.props.active);
+    }
   }
 }
 
 FilterButton.propTypes = {
   id: PropTypes.number,
   label: PropTypes.string.isRequired,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };
 
 FilterButton.defaultProps = {

@@ -12,7 +12,12 @@ export default class CategoryFilter extends Component {
       <ul className="category-filter">
         {categories.map(category =>
           <li className="category-filter__item" key={category.id}>
-            <CategoryFilterItem label={category.label} selected={category.id === this.props.current.id}/>
+            <CategoryFilterItem
+              label={category.label}
+              id={category.id}
+              selected={category.id === this.props.current.id}
+              onClick={this.props.onClick}
+            />
           </li>
         )}
       </ul>
@@ -27,7 +32,8 @@ const categoryShape = PropTypes.shape({
 
 CategoryFilter.propTypes = {
   categories: PropTypes.arrayOf(categoryShape).isRequired,
-  current: categoryShape
+  current: categoryShape,
+  onClick: PropTypes.func.isRequired
 };
 
 CategoryFilter.defaultProps = {

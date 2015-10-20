@@ -21,3 +21,18 @@ export function selectActiveSubCategories(currentCategory, currentSubCategoryFil
   return selectSubCategories(currentCategory, currentSubCategoryFilter)
     .filter(category => category.active);
 }
+
+export function selectVisibleItems(items, categoryFilter, subCategoryFilter) {
+  const filterByCategory = item => item.categories.indexOf(categoryFilter) !== -1;
+  const filterBySubCategory = item => item.categories.some(cat => subCategoryFilter.indexOf(cat) !== -1);
+
+  if (subCategoryFilter.length > 0) {
+    return items.filter(filterBySubCategory);
+  }
+
+  if (categoryFilter) {
+    return items.filter(filterByCategory);
+  }
+
+  return items;
+}

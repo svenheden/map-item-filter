@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clearCategoryFilter, clearSubCategoryFilter } from '../actions';
-import { selectCategory, selectActiveSubCategories } from '../selectors';
+import { selectVisibleItems, selectCategory, selectActiveSubCategories } from '../selectors';
 import FilterSummary from '../components/filter-summary';
 import Map from '../components/map';
 
@@ -30,7 +30,7 @@ function select(state) {
   return {
     currentCategory: currentCategory,
     currentSubCategories: selectActiveSubCategories(currentCategory, state.subCategoryFilter),
-    visibleItems: state.allItems
+    visibleItems: selectVisibleItems(state.allItems, state.categoryFilter, state.subCategoryFilter)
   };
 }
 

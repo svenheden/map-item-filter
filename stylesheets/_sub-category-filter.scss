@@ -12,8 +12,9 @@
 .sub-category-filter__toggler {
     border: 0;
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     background: $lightBlue;
+    border-bottom: 1px solid $lightBlue; // to match the border on .filter-summary
     font-size: inherit;
     font-weight: 600;
     cursor: pointer;

@@ -22,7 +22,7 @@ export function selectActiveSubCategories(currentCategory, currentSubCategoryFil
     .filter(category => category.active);
 }
 
-export function selectVisibleItems(items, categoryFilter, subCategoryFilter) {
+export function selectFilteredItems(items, categoryFilter, subCategoryFilter) {
   const filterByCategory = item => item.categories.indexOf(categoryFilter) !== -1;
   const filterBySubCategory = item => item.categories.some(cat => subCategoryFilter.indexOf(cat) !== -1);
 

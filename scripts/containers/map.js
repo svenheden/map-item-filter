@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clearCategoryFilter, clearSubCategoryFilter } from '../actions';
-import { selectVisibleItems, selectCategory, selectActiveSubCategories } from '../selectors';
+import { clearCategoryFilter, clearSubCategoryFilter, setItemsInMapView } from '../actions';
+import { selectFilteredItems, selectCategory, selectActiveSubCategories } from '../selectors';
 import FilterSummary from '../components/filter-summary';
 import Map from '../components/map';
 
@@ -18,7 +18,7 @@ class MapContainer extends Component {
           onClickCategory={() => dispatch(clearCategoryFilter())}
           onClickSubCategory={(id) => dispatch(clearSubCategoryFilter(id))}
         />
-        <Map/>
+        <Map items={visibleItems} onBoundsChange={(items) => dispatch(setItemsInMapView(items))}/>
       </div>
     );
   }
@@ -30,7 +30,7 @@ function select(state) {
   return {
     currentCategory: currentCategory,
     currentSubCategories: selectActiveSubCategories(currentCategory, state.subCategoryFilter),
-    visibleItems: selectVisibleItems(state.allItems, state.categoryFilter, state.subCategoryFilter)
+    visibleItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter)
   };
 }
 

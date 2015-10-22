@@ -15,7 +15,7 @@ class App extends Component {
         <nav>
           <CategoryFilter
             categories={categories}
-            current={currentCategory}
+            currentCategory={currentCategory}
             onClick={id => dispatch(setCategoryFilter(id))}
           />
         </nav>

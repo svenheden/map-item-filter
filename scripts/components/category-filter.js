@@ -15,7 +15,7 @@ export default class CategoryFilter extends Component {
             <CategoryFilterItem
               label={category.label}
               id={category.id}
-              selected={category.id === this.props.current.id}
+              selected={category.id === this.props.currentCategory.id}
               onClick={this.props.onClick}
             />
           </li>
@@ -32,12 +32,12 @@ const categoryShape = PropTypes.shape({
 
 CategoryFilter.propTypes = {
   categories: PropTypes.arrayOf(categoryShape).isRequired,
-  current: categoryShape,
+  currentCategory: categoryShape,
   onClick: PropTypes.func.isRequired
 };
 
 CategoryFilter.defaultProps = {
-  current: {
+  currentCategory: {
     id: 0,
     label: 'Alla enheter'
   }

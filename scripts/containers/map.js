@@ -7,19 +7,30 @@ import Map from '../components/map';
 
 class MapContainer extends Component {
   render() {
-    const { dispatch, currentCategory, currentSubCategories, filteredItems, visibleItems, googleMapsIsLoaded } = this.props;
+    const {
+      dispatch,
+      currentCategory,
+      currentSubCategories,
+      filteredItems,
+      visibleItems,
+      googleMapsIsLoaded
+    } = this.props;
 
     return (
       <div className="map-container">
         <FilterSummary
           category={currentCategory}
           subCategories={currentSubCategories}
-          numberOfItems={visibleItems.length}
+          numberOfItems={googleMapsIsLoaded ? visibleItems.length : filteredItems.length}
+          googleMapsIsLoaded={googleMapsIsLoaded}
           onClickCategory={() => dispatch(clearCategoryFilter())}
           onClickSubCategory={(id) => dispatch(clearSubCategoryFilter(id))}
         />
         { googleMapsIsLoaded &&
-          <Map items={filteredItems} onBoundsChange={(items) => dispatch(setItemsVisibleInMap(items))}/>
+          <Map
+            items={filteredItems}
+            onBoundsChange={(items) => dispatch(setItemsVisibleInMap(items))}
+          />
         }
       </div>
     );

@@ -7,7 +7,13 @@ import ItemList from '../components/item-list';
 
 class ListContainer extends Component {
   render() {
-    const { currentCategory, currentSubCategories, filteredItems, visibleItems, googleMapsIsLoaded } = this.props;
+    const {
+      currentCategory,
+      currentSubCategories,
+      filteredItems,
+      visibleItems,
+      googleMapsIsLoaded
+    } = this.props;
 
     return (
       <div className="list-container">

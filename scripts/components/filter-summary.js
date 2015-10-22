@@ -8,7 +8,7 @@ export default class FilterSummary extends Component {
 
     return (
       <div className="filter-summary">
-        Visar {matches} på {' '}
+        Visar {matches} {this.props.googleMapsIsLoaded ? 'inom det aktuella området på ' : 'på '}
         {this.props.subCategories.map(subCategory =>
           <Pill
             key={subCategory.id}
@@ -44,6 +44,7 @@ FilterSummary.propTypes = {
   category: categoryShape,
   subCategories: PropTypes.arrayOf(categoryShape),
   numberOfItems: PropTypes.number.isRequired,
+  googleMapsIsLoaded: PropTypes.bool.isRequired,
   onClickCategory: PropTypes.func.isRequired,
   onClickSubCategory: PropTypes.func.isRequired
 };

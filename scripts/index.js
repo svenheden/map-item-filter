@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import once from 'lodash.once';
 import App from './containers/App';
 import reducers from './reducers';
 import { setGoogleMapsAsLoaded } from './actions';
@@ -20,6 +21,7 @@ render(
   rootElement
 );
 
-window.initMap = function() {
-  store.dispatch(setGoogleMapsAsLoaded());
-};
+/**
+ * The global callback function that Google Maps is calling when their library has been loaded.
+ */
+window.initMap = once(() => { store.dispatch(setGoogleMapsAsLoaded()) });

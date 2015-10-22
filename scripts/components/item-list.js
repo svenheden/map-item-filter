@@ -5,8 +5,8 @@ export default class ItemList extends Component {
   render() {
     return (
       <ol className="item-list">
-        {this.props.items.map((item, index) =>
-          <li className="item-list__item" key={index}>
+        {this.props.items.map(item =>
+          <li className="item-list__item" key={item.id}>
             <Item heading={item.heading} address={item.address} phone={item.phone}/>
           </li>
         )}
@@ -16,6 +16,7 @@ export default class ItemList extends Component {
 }
 
 const itemShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   heading: PropTypes.string.isRequired,
   address: PropTypes.arrayOf(PropTypes.string).isRequired,
   phone: PropTypes.string.isRequired

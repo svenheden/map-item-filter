@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import reducers from './reducers';
+import { setGoogleMapsAsLoaded } from './actions';
 
 if (!window.__DATA__) {
   console.error(new Error('The initial state from the server is missing'));
@@ -18,3 +19,7 @@ render(
   </Provider>,
   rootElement
 );
+
+window.initMap = function() {
+  store.dispatch(setGoogleMapsAsLoaded());
+};

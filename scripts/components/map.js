@@ -1,17 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import MapMarker from './map-marker';
 import shallowEqual from 'react-pure-render/shallowEqual';
-const gm = window.google.maps;
 
 export default class Map extends Component {
   constructor() {
     super();
-    this.state = { mapIsLoaded: false };
+    this.state = { mapIsInitialized: false };
   }
 
   componentDidMount() {
-    this.map = new gm.Map(this.refs.map);
-    this.setState({ mapIsLoaded: true });
+    this.map = new window.google.maps.Map(this.refs.map);
+    this.setState({ mapIsInitialized: true });
     this.setupMapEventListener();
   }
 
@@ -34,22 +33,22 @@ export default class Map extends Component {
   }
 
   teardownMapEventListener() {
-    gm.event.removeListener(this.listener);
+    window.google.maps.event.removeListener(this.listener);
   }
 
   itemIsInView(item) {
-    return this.map.getBounds().contains(new gm.LatLng(item.location.lat, item.location.lng));
+    return this.map.getBounds().contains(new window.google.maps.LatLng(item.location.lat, item.location.lng));
   }
 
   render() {
     let markers;
 
-    if (this.state.mapIsLoaded) {
-      const bounds = new gm.LatLngBounds();
+    if (this.state.mapIsInitialized) {
+      const bounds = new window.google.maps.LatLngBounds();
 
       markers = this.props.items.map(item => {
-        bounds.extend(new gm.LatLng(item.location.lat, item.location.lng));
-        return <MapMarker key={item.id} location={item.location} map={this.map} heading={item.heading}/>;
+        bounds.extend(new window.google.maps.LatLng(item.location.lat, item.location.lng));
+        return <MapMarker key={item.id} location={item.location} map={this.map}/>;
       });
 
       this.map.fitBounds(bounds);

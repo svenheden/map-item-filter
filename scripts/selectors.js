@@ -36,3 +36,7 @@ export function selectFilteredItems(items, categoryFilter, subCategoryFilter) {
 
   return items;
 }
+
+export function selectVisibleItems(items, itemsVisibleInMap) {
+  return items.filter(item => itemsVisibleInMap.indexOf(item.id) !== -1);
+}

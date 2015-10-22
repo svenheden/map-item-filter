@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clearCategoryFilter, clearSubCategoryFilter, setItemsInMapView } from '../actions';
-import { selectFilteredItems, selectCategory, selectActiveSubCategories } from '../selectors';
+import { clearCategoryFilter, clearSubCategoryFilter, setItemsVisibleInMap } from '../actions';
+import { selectCategory, selectActiveSubCategories, selectFilteredItems, selectVisibleItems } from '../selectors';
 import FilterSummary from '../components/filter-summary';
 import Map from '../components/map';
 
 class MapContainer extends Component {
   render() {
-    const { dispatch, currentCategory, currentSubCategories, visibleItems } = this.props;
+    const { dispatch, currentCategory, currentSubCategories, filteredItems, visibleItems, googleMapsIsLoaded } = this.props;
 
     return (
       <div className="map-container">
@@ -18,7 +18,9 @@ class MapContainer extends Component {
           onClickCategory={() => dispatch(clearCategoryFilter())}
           onClickSubCategory={(id) => dispatch(clearSubCategoryFilter(id))}
         />
-        <Map items={visibleItems} onBoundsChange={(items) => dispatch(setItemsInMapView(items))}/>
+        { googleMapsIsLoaded &&
+          <Map items={filteredItems} onBoundsChange={(items) => dispatch(setItemsVisibleInMap(items))}/>
+        }
       </div>
     );
   }
@@ -30,7 +32,9 @@ function select(state) {
   return {
     currentCategory: currentCategory,
     currentSubCategories: selectActiveSubCategories(currentCategory, state.subCategoryFilter),
-    visibleItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter)
+    filteredItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter),
+    visibleItems: selectVisibleItems(state.allItems, state.itemsVisibleInMap),
+    googleMapsIsLoaded: state.googleMapsIsLoaded
   };
 }
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCategoryFilter, addSubCategoryFilter, clearSubCategoryFilter } from '../actions';
-import { selectFilteredItems, selectCategory, selectSubCategories } from '../selectors';
+import { selectCategory, selectSubCategories, selectFilteredItems, selectVisibleItems } from '../selectors';
 import SubCategoryFilter from '../components/sub-category-filter';
 import ItemList from '../components/item-list';
 
 class ListContainer extends Component {
   render() {
-    const { currentCategory, currentSubCategories, visibleItems } = this.props;
+    const { currentCategory, currentSubCategories, filteredItems, visibleItems, googleMapsIsLoaded } = this.props;
 
     return (
       <div className="list-container">
@@ -19,7 +19,7 @@ class ListContainer extends Component {
             onClickSubCategory={this.onClickSubCategory.bind(this)}
           />
         }
-        <ItemList items={visibleItems}/>
+        <ItemList items={googleMapsIsLoaded ? visibleItems : filteredItems}/>
       </div>
     );
   }
@@ -43,7 +43,9 @@ function select(state) {
   return {
     currentCategory: currentCategory,
     currentSubCategories: selectSubCategories(currentCategory, state.subCategoryFilter),
-    visibleItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter)
+    filteredItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter),
+    visibleItems: selectVisibleItems(state.allItems, state.itemsVisibleInMap),
+    googleMapsIsLoaded: state.googleMapsIsLoaded
   };
 }
 

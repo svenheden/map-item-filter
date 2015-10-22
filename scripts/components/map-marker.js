@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-const gm = window.google.maps;
 
 export default class MapMarker extends Component {
   constructor() {
@@ -12,10 +11,9 @@ export default class MapMarker extends Component {
 
   componentDidMount() {
     this.setState({
-      marker: new gm.Marker({
+      marker: new window.google.maps.Marker({
         map: this.props.map,
-        position: new gm.LatLng(this.props.location.lat, this.props.location.lng),
-        title: this.props.heading
+        position: new window.google.maps.LatLng(this.props.location.lat, this.props.location.lng)
       })
     });
   }
@@ -29,12 +27,10 @@ export default class MapMarker extends Component {
   }
 }
 
-// MapMarker.propTypes = {
-//   items: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.number.isRequired,
-//     location: PropTypes.shape({
-//       lat: PropTypes.string.isRequired,
-//       lng: PropTypes.string.isRequired
-//     }).isRequired
-//   }))
-// };
+MapMarker.propTypes = {
+  location: PropTypes.shape({
+    lat: PropTypes.string.isRequired,
+    lng: PropTypes.string.isRequired
+  }).isRequired,
+  map: React.PropTypes.object.isRequired
+};

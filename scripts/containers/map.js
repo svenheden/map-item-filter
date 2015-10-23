@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  clearCategoryFilter,
-  clearSubCategoryFilter,
-  setItemsVisibleInMap
-} from '../actions';
-import {
-  currentCategorySelector,
-  activeSubCategoriesSelector,
-  filteredItemsSelector,
-  visibleItemsSelector
-} from '../selectors';
+import { clearCategoryFilter, clearSubCategoryFilter } from '../actions/categories';
+import { setItemsVisibleInMap } from '../actions/map';
+import { currentCategorySelector, activeSubCategoriesSelector } from '../selectors/categories';
+import { filteredItemsSelector, visibleItemsSelector } from '../selectors/items';
 import FilterSummary from '../components/filter-summary';
 import Map from '../components/map';
 

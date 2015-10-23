@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  setCategoryFilter,
-  addSubCategoryFilter,
-  clearSubCategoryFilter
-} from '../actions';
-import {
-  currentCategorySelector,
-  subCategoriesSelector,
-  filteredItemsSelector,
-  visibleItemsSelector
-} from '../selectors';
+import { setCategoryFilter, addSubCategoryFilter, clearSubCategoryFilter } from '../actions/categories';
+import { currentCategorySelector, subCategoriesSelector } from '../selectors/categories';
+import { filteredItemsSelector, visibleItemsSelector } from '../selectors/items';
 import SubCategoryFilter from '../components/sub-category-filter';
 import ItemList from '../components/item-list';
 

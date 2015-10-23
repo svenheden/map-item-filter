@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCategoryFilter } from '../actions';
-import { categoriesSelector, currentCategorySelector } from '../selectors';
+import { setCategoryFilter } from '../actions/categories';
+import { categoriesSelector, currentCategorySelector } from '../selectors/categories';
 import CategoryFilter from '../components/category-filter';
 import MapContainer from '../containers/map';
 import ListContainer from '../containers/list';

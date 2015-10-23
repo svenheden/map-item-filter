@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import once from 'lodash.once';
 import App from './containers/App';
 import reducers from './reducers';
-import { setGoogleMapsAsLoaded } from './actions';
+import { setGoogleMapsAsLoaded } from './actions/map';
 
 if (!window.__DATA__) {
   console.error(new Error('The initial state from the server is missing'));

@@ -38,7 +38,7 @@ class MapContainer extends Component {
         { googleMapsIsLoaded &&
           <Map
             items={filteredItems}
-            onBoundsChange={(items) => dispatch(setItemsVisibleInMap(items))}
+            onVisibleItemsChange={(items) => dispatch(setItemsVisibleInMap(items))}
           />
         }
       </div>

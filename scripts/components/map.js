@@ -22,13 +22,17 @@ export default class Map extends Component {
     return !shallowEqual(nextProps.items, this.props.items) || !shallowEqual(nextState, this.state);
   }
 
+  componentWillUpdate(nextProps) {
+    this.props.onVisibleItemsChange(nextProps.items.map(item => item.id));
+  }
+
   setupMapEventListener() {
     this.listener = this.map.addListener('idle', () => {
       const itemsInView = this.props.items
         .filter(this.itemIsInView.bind(this))
         .map(item => item.id);
 
-      this.props.onBoundsChange(itemsInView);
+      this.props.onVisibleItemsChange(itemsInView);
     });
   }
 
@@ -70,5 +74,5 @@ Map.propTypes = {
       lng: PropTypes.string.isRequired
     }).isRequired
   })),
-  onBoundsChange: PropTypes.func
+  onVisibleItemsChange: PropTypes.func
 };

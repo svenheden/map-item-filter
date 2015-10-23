@@ -6,12 +6,13 @@ The goal of this project is for me to try to recreate the core of an app I wrote
 
 ## Technologies used
 
-* [React](https://facebook.github.io/react/)
-* [Redux](https://github.com/rackt/redux)
-* [Babel](https://babeljs.io)
-* [webpack](https://webpack.github.io)
-* [Sass](http://sass-lang.com/)
-* [CSS Modules](https://github.com/css-modules/css-modules)
+* [React](https://facebook.github.io/react/) for UI components
+* [Redux](https://github.com/rackt/redux) for holding the application state
+    * [React Redux](https://github.com/rackt/react-redux) for binding the React components to the state
+    * [Reselect](https://github.com/rackt/reselect) for creating memoized, composable selector functions that transforms the state for the components to use
+* [Babel](https://babeljs.io) for transpiling the ES2015 and JSX syntax to ES5
+* [Browserify](http://browserify.org) for bundling up the CommonJS style modules for browser usage
+* [Sass](http://sass-lang.com/) for pre-processing the stylesheets
 
 ## How to build
 

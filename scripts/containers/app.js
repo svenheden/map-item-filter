@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setCategoryFilter } from '../actions';
-import { selectCategory } from '../selectors';
+import { categoriesSelector, currentCategorySelector } from '../selectors';
 import CategoryFilter from '../components/category-filter';
 import MapContainer from '../containers/map';
 import ListContainer from '../containers/list';
@@ -28,8 +28,8 @@ class App extends Component {
 
 function select(state) {
   return {
-    categories: state.allCategories,
-    currentCategory: selectCategory(state.allCategories, state.categoryFilter)
+    categories: categoriesSelector(state),
+    currentCategory: currentCategorySelector(state)
   };
 }
 

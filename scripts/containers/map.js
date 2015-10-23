@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clearCategoryFilter, clearSubCategoryFilter, setItemsVisibleInMap } from '../actions';
-import { selectCategory, selectActiveSubCategories, selectFilteredItems, selectVisibleItems } from '../selectors';
+import {
+  clearCategoryFilter,
+  clearSubCategoryFilter,
+  setItemsVisibleInMap
+} from '../actions';
+import {
+  currentCategorySelector,
+  activeSubCategoriesSelector,
+  filteredItemsSelector,
+  visibleItemsSelector
+} from '../selectors';
 import FilterSummary from '../components/filter-summary';
 import Map from '../components/map';
 
@@ -9,8 +18,8 @@ class MapContainer extends Component {
   render() {
     const {
       dispatch,
-      currentCategory,
-      currentSubCategories,
+      category,
+      subCategories,
       filteredItems,
       visibleItems,
       googleMapsIsLoaded
@@ -19,8 +28,8 @@ class MapContainer extends Component {
     return (
       <div className="map-container">
         <FilterSummary
-          category={currentCategory}
-          subCategories={currentSubCategories}
+          category={category}
+          subCategories={subCategories}
           numberOfItems={googleMapsIsLoaded ? visibleItems.length : filteredItems.length}
           googleMapsIsLoaded={googleMapsIsLoaded}
           onClickCategory={() => dispatch(clearCategoryFilter())}
@@ -38,13 +47,11 @@ class MapContainer extends Component {
 }
 
 function select(state) {
-  const currentCategory = selectCategory(state.allCategories, state.categoryFilter);
-
   return {
-    currentCategory: currentCategory,
-    currentSubCategories: selectActiveSubCategories(currentCategory, state.subCategoryFilter),
-    filteredItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter),
-    visibleItems: selectVisibleItems(state.allItems, state.itemsVisibleInMap),
+    category: currentCategorySelector(state),
+    subCategories: activeSubCategoriesSelector(state),
+    filteredItems: filteredItemsSelector(state),
+    visibleItems: visibleItemsSelector(state),
     googleMapsIsLoaded: state.googleMapsIsLoaded
   };
 }

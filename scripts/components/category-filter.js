@@ -3,14 +3,9 @@ import CategoryFilterItem from '../components/category-filter-item';
 
 export default class CategoryFilter extends Component {
   render() {
-    const categories = [{
-      id: 0,
-      label: 'Alla enheter'
-    }, ...this.props.categories];
-
     return (
       <ul className="category-filter">
-        {categories.map(category =>
+        {this.props.categories.map(category =>
           <li className="category-filter__item" key={category.id}>
             <CategoryFilterItem
               label={category.label}
@@ -32,13 +27,6 @@ const categoryShape = PropTypes.shape({
 
 CategoryFilter.propTypes = {
   categories: PropTypes.arrayOf(categoryShape).isRequired,
-  currentCategory: categoryShape,
+  currentCategory: categoryShape.isRequired,
   onClick: PropTypes.func.isRequired
-};
-
-CategoryFilter.defaultProps = {
-  currentCategory: {
-    id: 0,
-    label: 'Alla enheter'
-  }
 };

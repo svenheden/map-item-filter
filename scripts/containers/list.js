@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { setCategoryFilter, addSubCategoryFilter, clearSubCategoryFilter } from '../actions';
-import { selectCategory, selectSubCategories, selectFilteredItems, selectVisibleItems } from '../selectors';
+import {
+  setCategoryFilter,
+  addSubCategoryFilter,
+  clearSubCategoryFilter
+} from '../actions';
+import {
+  currentCategorySelector,
+  subCategoriesSelector,
+  filteredItemsSelector,
+  visibleItemsSelector
+} from '../selectors';
 import SubCategoryFilter from '../components/sub-category-filter';
 import ItemList from '../components/item-list';
 
 class ListContainer extends Component {
   render() {
     const {
-      currentCategory,
-      currentSubCategories,
+      category,
+      subCategories,
       filteredItems,
       visibleItems,
       googleMapsIsLoaded
@@ -17,10 +26,10 @@ class ListContainer extends Component {
 
     return (
       <div className="list-container">
-        {currentCategory && currentSubCategories &&
+        {subCategories.length > 0 &&
           <SubCategoryFilter
-            category={currentCategory}
-            subCategories={currentSubCategories}
+            category={category}
+            subCategories={subCategories}
             onClickCategory={this.onClickCategory.bind(this)}
             onClickSubCategory={this.onClickSubCategory.bind(this)}
           />
@@ -31,7 +40,7 @@ class ListContainer extends Component {
   }
 
   onClickCategory() {
-    this.props.dispatch(setCategoryFilter(this.props.currentCategory.id));
+    this.props.dispatch(setCategoryFilter(this.props.category.id));
   }
 
   onClickSubCategory(id, active) {
@@ -44,13 +53,11 @@ class ListContainer extends Component {
 }
 
 function select(state) {
-  const currentCategory = selectCategory(state.allCategories, state.categoryFilter);
-
   return {
-    currentCategory: currentCategory,
-    currentSubCategories: selectSubCategories(currentCategory, state.subCategoryFilter),
-    filteredItems: selectFilteredItems(state.allItems, state.categoryFilter, state.subCategoryFilter),
-    visibleItems: selectVisibleItems(state.allItems, state.itemsVisibleInMap),
+    category: currentCategorySelector(state),
+    subCategories: subCategoriesSelector(state),
+    filteredItems: filteredItemsSelector(state),
+    visibleItems: visibleItemsSelector(state),
     googleMapsIsLoaded: state.googleMapsIsLoaded
   };
 }

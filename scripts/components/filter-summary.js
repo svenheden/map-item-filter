@@ -4,7 +4,8 @@ import Pill from '../components/pill';
 export default class FilterSummary extends Component {
   render() {
     const matches = this.props.numberOfItems + (this.props.numberOfItems === 1 ? ' träff' : ' träffar');
-    const hasBothCategoriesAndSubCategories = this.props.category && (this.props.subCategories.length > 0);
+    const hasCategory = this.props.category.id !== 0;
+    const hasSubCategories = this.props.subCategories.length > 0;
 
     return (
       <div className="filter-summary">
@@ -18,8 +19,8 @@ export default class FilterSummary extends Component {
             onClick={() => this.props.onClickSubCategory(subCategory.id)}
           />
         )}
-        {hasBothCategoriesAndSubCategories && ' inom ' }
-        {this.props.category &&
+        {hasSubCategories && ' inom ' }
+        {hasCategory &&
           <Pill
             id={this.props.category.id}
             label={this.props.category.label}
@@ -27,7 +28,7 @@ export default class FilterSummary extends Component {
             onClick={() => this.props.onClickCategory()}
           />
         }
-        {!this.props.category &&
+        {!hasCategory &&
           ' alla enheter'
         }
       </div>

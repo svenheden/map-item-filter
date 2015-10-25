@@ -2,8 +2,8 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background: $blue;
-    border-top: 4px solid $darkBlue;
+    background: $primary;
+    border-top: 4px solid $dark;
     text-align: right;
     padding-left: 1em;
     padding-right: 1em;
@@ -25,11 +25,11 @@
 
     &:hover,
     &:focus {
-        background: $darkBlue;
+        background: $dark;
     }
 }
 
 .category-filter__link--selected {
-    background: $darkBlue;
+    background: $dark;
     cursor: default;
 }

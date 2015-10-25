@@ -1,6 +1,6 @@
 .pill {
     border: 0;
-    background: $lightBlue;
+    background: $light;
     padding: 4px 22px 4px 8px; // the large right padding is to compensate for the "X"
     margin: 2px;
     cursor: pointer;
@@ -13,7 +13,7 @@
     // the "X"
     &:after {
         content: "\00d7";
-        color: $darkBlue;
+        color: $dark;
         font-size: 1.5em;
         padding: 0;
         display: inline-block;
@@ -24,6 +24,6 @@
 
     &:hover,
     &:focus {
-        background: $lightBlueHover;
+        background: darken($light, 10%);
     }
 }

@@ -27,13 +27,13 @@
 }
 
 .filter-button--active {
-    background: $lightBlue;
+    background: $light;
     position: relative;
 
     // the checkbox
     &:after {
         content: "\2714";
-        background: $pink;
+        background: $secondary;
         color: $white;
         border-radius: 50%;
         position: absolute;

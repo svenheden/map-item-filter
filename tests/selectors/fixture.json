@@ -1,0 +1,76 @@
+{
+  "allCategories": [
+    {
+      "id": 1,
+      "label": "Kategori #1",
+      "subCategories": [
+        {
+          "id": 2,
+          "label": "Kategori #2"
+        },
+        {
+          "id": 3,
+          "label": "Kategori #3"
+        },
+        {
+          "id": 4,
+          "label": "Kategori #4"
+        }
+      ]
+    }
+  ],
+  "allItems": [
+    {
+      "id": 1,
+      "heading": "Foo",
+      "categories": [
+        1,
+        2,
+        3
+      ],
+      "address": [
+        "Foobarvägen 4",
+        "121 87 Enskededalen"
+      ],
+      "phone": "08-380 102 90",
+      "location": {
+        "lat": "59.364132",
+        "lng": "18.157432"
+      }
+    },
+    {
+      "id": 2,
+      "heading": "Bar",
+      "categories": [
+        1,
+        2
+      ],
+      "address": [
+        "Foobargatan 35A",
+        "171 71 Solna"
+      ],
+      "phone": "08-250 209 80",
+      "location": {
+        "lat": "57.494632",
+        "lng": "12.018908"
+      }
+    },
+    {
+      "id": 3,
+      "heading": "Baz",
+      "categories": [
+        1,
+        4
+      ],
+      "address": [
+        "Bargatan 9",
+        "803 20 Gävle"
+      ],
+      "phone": "031-124 65 65",
+      "location": {
+        "lat": "59.312625",
+        "lng": "18.150867"
+      }
+    }
+  ]
+}

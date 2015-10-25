@@ -4,13 +4,16 @@
   "title": "Map Item Filter",
   "description": "POC of a SPA that can be used for filtering items by categories and/or by zooming and panning in a map",
   "private": true,
-  "main": "index.html",
+  "engines": {
+    "node": ">=4.0"
+  },
   "scripts": {
     "build": "npm run build:js && npm run build:css",
     "build:js": "browserify scripts/index.js -t babelify -o dist/script.js",
     "build:css": "node-sass stylesheets -o dist",
     "watch:js": "watchify scripts/index.js -t babelify -o dist/script.js",
-    "watch:css": "node-sass stylesheets -o dist -w"
+    "watch:css": "npm run build:css -- -w",
+    "test": "babel-tape-runner tests/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +22,11 @@
   "author": "Jonathan Persson <persson.jonathan@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-tape-runner": "^1.2.0",
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "node-sass": "^3.3.3",
+    "tape": "^4.2.2",
     "watchify": "^3.4.0"
   },
   "dependencies": {

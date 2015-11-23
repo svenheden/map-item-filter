@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setCategoryFilter, addSubCategoryFilter, clearSubCategoryFilter } from '../actions/categories';
 import { currentCategorySelector, subCategoriesSelector } from '../selectors/categories';
@@ -6,43 +6,33 @@ import { filteredItemsSelector, visibleItemsSelector } from '../selectors/items'
 import SubCategoryFilter from '../components/sub-category-filter';
 import ItemList from '../components/item-list';
 
-class ListContainer extends Component {
-  render() {
-    const {
-      category,
-      subCategories,
-      filteredItems,
-      visibleItems,
-      googleMapsIsLoaded
-    } = this.props;
+const ListContainer = props => {
+  return (
+    <div className="list-container">
+      {props.subCategories.length > 0 &&
+        <SubCategoryFilter
+          category={props.category}
+          subCategories={props.subCategories}
+          onClickCategory={() => handleCategoryClick(props)}
+          onClickSubCategory={(id, active) => handleSubCategoryClick(props, id, active)}
+        />
+      }
+      <ItemList items={props.googleMapsIsLoaded ? props.visibleItems : props.filteredItems}/>
+    </div>
+  );
+};
 
-    return (
-      <div className="list-container">
-        {subCategories.length > 0 &&
-          <SubCategoryFilter
-            category={category}
-            subCategories={subCategories}
-            onClickCategory={() => this.onClickCategory()}
-            onClickSubCategory={(id, active) => this.onClickSubCategory(id, active)}
-          />
-        }
-        <ItemList items={googleMapsIsLoaded ? visibleItems : filteredItems}/>
-      </div>
-    );
-  }
+const handleCategoryClick = props => {
+  props.dispatch(setCategoryFilter(props.category.id));
+};
 
-  onClickCategory() {
-    this.props.dispatch(setCategoryFilter(this.props.category.id));
+const handleSubCategoryClick = (props, id, active) => {
+  if (active) {
+    props.dispatch(clearSubCategoryFilter(id));
+  } else {
+    props.dispatch(addSubCategoryFilter(id));
   }
-
-  onClickSubCategory(id, active) {
-    if (active) {
-      this.props.dispatch(clearSubCategoryFilter(id));
-    } else {
-      this.props.dispatch(addSubCategoryFilter(id));
-    }
-  }
-}
+};
 
 function select(state) {
   return {

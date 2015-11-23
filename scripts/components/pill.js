@@ -1,17 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class Pill extends Component {
-  render() {
-    return (
-      <button
-        type="button"
-        className="pill"
-        title={this.props.tooltip}
-        onClick={() => this.props.onClick(this.props.id)}
-      >{this.props.label}</button>
-    );
-  }
-}
+const Pill = props => {
+  return (
+    <button
+      type="button"
+      className="pill"
+      title={props.tooltip}
+      onClick={() => props.onClick(props.id)}
+    >{props.label}</button>
+  );
+};
 
 Pill.propTypes = {
   id: PropTypes.number.isRequired,
@@ -19,3 +17,5 @@ Pill.propTypes = {
   tooltip: PropTypes.string,
   onClick: PropTypes.func.isRequired
 };
+
+export default Pill;

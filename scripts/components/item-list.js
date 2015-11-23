@@ -1,19 +1,17 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Item from '../components/item';
 
-export default class ItemList extends Component {
-  render() {
-    return (
-      <ol className="item-list">
-        {this.props.items.map(item =>
-          <li className="item-list__item" key={item.id}>
-            <Item heading={item.heading} address={item.address} phone={item.phone}/>
-          </li>
-        )}
-      </ol>
-    );
-  }
-}
+const ItemList = props => {
+  return (
+    <ol className="item-list">
+      {props.items.map(item =>
+        <li className="item-list__item" key={item.id}>
+          <Item heading={item.heading} address={item.address} phone={item.phone}/>
+        </li>
+      )}
+    </ol>
+  );
+};
 
 const itemShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -25,3 +23,5 @@ const itemShape = PropTypes.shape({
 ItemList.propTypes = {
   items: PropTypes.arrayOf(itemShape)
 };
+
+export default ItemList;

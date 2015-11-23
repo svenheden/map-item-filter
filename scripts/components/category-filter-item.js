@@ -1,30 +1,28 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames-minimal';
 
-export default class CategoryFilterItem extends Component {
-  render() {
-    const classes = classNames({
-      'category-filter__link': true,
-      'category-filter__link--selected': this.props.selected
-    });
+const CategoryFilterItem = props => {
+  const classes = classNames({
+    'category-filter__link': true,
+    'category-filter__link--selected': props.selected
+  });
 
-    return (
-      <a
-        href="#"
-        className={classes}
-        onClick={ev => this.handleClick(ev)}
-      >{this.props.label}</a>
-    );
+  return (
+    <a
+      href="#"
+      className={classes}
+      onClick={ev => handleClick(ev, props)}
+    >{props.label}</a>
+  );
+};
+
+const handleClick = (ev, props) => {
+  ev.preventDefault();
+
+  if (!props.selected) {
+    props.onClick(props.id);
   }
-
-  handleClick(ev) {
-    ev.preventDefault();
-
-    if (!this.props.selected) {
-      this.props.onClick(this.props.id);
-    }
-  }
-}
+};
 
 CategoryFilterItem.propTypes = {
   id: PropTypes.number.isRequired,
@@ -36,3 +34,5 @@ CategoryFilterItem.propTypes = {
 CategoryFilterItem.defaultProps = {
   selected: false
 };
+
+export default CategoryFilterItem;

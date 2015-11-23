@@ -1,24 +1,22 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import CategoryFilterItem from '../components/category-filter-item';
 
-export default class CategoryFilter extends Component {
-  render() {
-    return (
-      <ul className="category-filter">
-        {this.props.categories.map(category =>
-          <li className="category-filter__item" key={category.id}>
-            <CategoryFilterItem
-              label={category.label}
-              id={category.id}
-              selected={category.id === this.props.currentCategory.id}
-              onClick={this.props.onClick}
-            />
-          </li>
-        )}
-      </ul>
-    );
-  }
-}
+const CategoryFilter = props => {
+  return (
+    <ul className="category-filter">
+      {props.categories.map(category =>
+        <li className="category-filter__item" key={category.id}>
+          <CategoryFilterItem
+            label={category.label}
+            id={category.id}
+            selected={category.id === props.currentCategory.id}
+            onClick={props.onClick}
+          />
+        </li>
+      )}
+    </ul>
+  );
+};
 
 const categoryShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -30,3 +28,5 @@ CategoryFilter.propTypes = {
   currentCategory: categoryShape.isRequired,
   onClick: PropTypes.func.isRequired
 };
+
+export default CategoryFilter;

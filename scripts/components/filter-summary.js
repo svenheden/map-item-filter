@@ -1,40 +1,36 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Pill from '../components/pill';
 
-export default class FilterSummary extends Component {
-  render() {
-    const matches = this.props.numberOfItems + (this.props.numberOfItems === 1 ? ' träff' : ' träffar');
-    const hasCategory = this.props.category.id !== 0;
-    const hasSubCategories = this.props.subCategories.length > 0;
+const FilterSummary = props => {
+  const matches = props.numberOfItems + (props.numberOfItems === 1 ? ' träff' : ' träffar');
+  const hasCategory = props.category.id !== 0;
+  const hasSubCategories = props.subCategories.length > 0;
 
-    return (
-      <div className="filter-summary">
-        Visar {matches} {this.props.googleMapsIsLoaded ? 'inom det aktuella området på ' : 'på '}
-        {this.props.subCategories.map(subCategory =>
-          <Pill
-            key={subCategory.id}
-            id={subCategory.id}
-            label={subCategory.label}
-            tooltip={`Ta bort ${subCategory.label} från filtreringen`}
-            onClick={() => this.props.onClickSubCategory(subCategory.id)}
-          />
-        )}
-        {hasSubCategories && ' inom ' }
-        {hasCategory &&
-          <Pill
-            id={this.props.category.id}
-            label={this.props.category.label}
-            tooltip={`Ta bort ${this.props.category.label} från filtreringen`}
-            onClick={() => this.props.onClickCategory()}
-          />
-        }
-        {!hasCategory &&
-          ' alla enheter'
-        }
-      </div>
-    );
-  }
-}
+  return (
+    <div className="filter-summary">
+      Visar {matches} {props.googleMapsIsLoaded ? 'inom det aktuella området på ' : 'på '}
+      {props.subCategories.map(subCategory =>
+        <Pill
+          key={subCategory.id}
+          id={subCategory.id}
+          label={subCategory.label}
+          tooltip={`Ta bort ${subCategory.label} från filtreringen`}
+          onClick={() => props.onClickSubCategory(subCategory.id)}
+        />
+      )}
+      {hasSubCategories && ' inom ' }
+      {hasCategory &&
+        <Pill
+          id={props.category.id}
+          label={props.category.label}
+          tooltip={`Ta bort ${props.category.label} från filtreringen`}
+          onClick={() => props.onClickCategory()}
+        />
+      }
+      {!hasCategory && ' alla enheter'}
+    </div>
+  );
+};
 
 const categoryShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -49,3 +45,5 @@ FilterSummary.propTypes = {
   onClickCategory: PropTypes.func.isRequired,
   onClickSubCategory: PropTypes.func.isRequired
 };
+
+export default FilterSummary;

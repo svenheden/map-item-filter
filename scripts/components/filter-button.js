@@ -1,29 +1,27 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames-minimal';
 
-export default class FilterButton extends Component {
-  render() {
-    const classes = classNames({
-      'filter-button': true,
-      'filter-button--active': this.props.active,
-      'filter-button--disabled': this.props.disabled
-    });
+const FilterButton = props => {
+  const classes = classNames({
+    'filter-button': true,
+    'filter-button--active': props.active,
+    'filter-button--disabled': props.disabled
+  });
 
-    return (
-      <button
-        type="button"
-        className={classes}
-        onClick={() => this.handleClick()}
-      >{this.props.label}</button>
-    );
-  }
+  return (
+    <button
+      type="button"
+      className={classes}
+      onClick={() => handleClick(props)}
+    >{props.label}</button>
+  );
+};
 
-  handleClick() {
-    if (!this.props.disabled) {
-      this.props.onClick(this.props.id, this.props.active);
-    }
+const handleClick = props => {
+  if (!props.disabled) {
+    props.onClick(props.id, props.active);
   }
-}
+};
 
 FilterButton.propTypes = {
   id: PropTypes.number,
@@ -37,3 +35,5 @@ FilterButton.defaultProps = {
   id: 0,
   active: false
 };
+
+export default FilterButton;

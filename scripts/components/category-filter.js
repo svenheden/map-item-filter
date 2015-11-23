@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import CategoryFilterItem from '../components/category-filter-item';
 
 const CategoryFilter = props => {

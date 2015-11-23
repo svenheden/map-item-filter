@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import { clearCategoryFilter, clearSubCategoryFilter } from '../actions/categories';
 import { setItemsVisibleInMap } from '../actions/map';

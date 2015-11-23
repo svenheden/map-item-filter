@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import classNames from 'classnames-minimal';
 import FilterButton from '../components/filter-button';
 

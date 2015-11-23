@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import MapMarker from './map-marker';
 import shallowEqual from 'react-pure-render/shallowEqual';
 

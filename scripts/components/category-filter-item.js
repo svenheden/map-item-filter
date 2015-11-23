@@ -12,7 +12,7 @@ export default class CategoryFilterItem extends Component {
       <a
         href="#"
         className={classes}
-        onClick={this.handleClick.bind(this)}
+        onClick={ev => this.handleClick(ev)}
       >{this.props.label}</a>
     );
   }

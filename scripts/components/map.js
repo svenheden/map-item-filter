@@ -29,7 +29,7 @@ export default class Map extends Component {
   setupMapEventListener() {
     this.listener = this.map.addListener('idle', () => {
       const itemsInView = this.props.items
-        .filter(this.itemIsInView.bind(this))
+        .filter(item => this.itemIsInView(item))
         .map(item => item.id);
 
       this.props.onVisibleItemsChange(itemsInView);

@@ -22,8 +22,8 @@ class ListContainer extends Component {
           <SubCategoryFilter
             category={category}
             subCategories={subCategories}
-            onClickCategory={this.onClickCategory.bind(this)}
-            onClickSubCategory={this.onClickSubCategory.bind(this)}
+            onClickCategory={() => this.onClickCategory()}
+            onClickSubCategory={(id, active) => this.onClickSubCategory(id, active)}
           />
         }
         <ItemList items={googleMapsIsLoaded ? visibleItems : filteredItems}/>

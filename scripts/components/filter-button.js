@@ -13,7 +13,7 @@ export default class FilterButton extends Component {
       <button
         type="button"
         className={classes}
-        onClick={this.handleClick.bind(this)}
+        onClick={() => this.handleClick()}
       >{this.props.label}</button>
     );
   }

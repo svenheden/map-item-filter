@@ -52,7 +52,7 @@ export default class SubCategoryFilter extends Component {
         <button
           type="button"
           className="sub-category-filter__toggler"
-          onClick={this.toggleVisibility.bind(this)}
+          onClick={() => this.toggleVisibility()}
         >{this.state.visible ? 'Dölj filtrering' : 'Visa filtrering'}</button>
       </div>
     );

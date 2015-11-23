@@ -1,16 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames-minimal';
 
 export default class FilterButton extends Component {
   render() {
-    let classes = 'filter-button';
-
-    if (this.props.active) {
-      classes += ' filter-button--active';
-    }
-
-    if (this.props.disabled) {
-      classes += ' filter-button--disabled';
-    }
+    const classes = classNames({
+      'filter-button': true,
+      'filter-button--active': this.props.active,
+      'filter-button--disabled': this.props.disabled
+    });
 
     return (
       <button

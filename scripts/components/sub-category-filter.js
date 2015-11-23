@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames-minimal';
 import FilterButton from '../components/filter-button';
 
 export default class SubCategoryFilter extends Component {
@@ -18,11 +19,10 @@ export default class SubCategoryFilter extends Component {
 
   render() {
     const hasActiveSubCategories = (this.props.subCategories.filter(cat => cat.active).length > 0);
-    let classes = 'sub-category-filter';
-
-    if (this.state.visible) {
-      classes += ' sub-category-filter--visible';
-    }
+    const classes = classNames({
+      'sub-category-filter': true,
+      'sub-category-filter--visible': this.state.visible
+    });
 
     return (
       <div className={classes}>

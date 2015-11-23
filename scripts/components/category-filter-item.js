@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames-minimal';
 
 export default class CategoryFilterItem extends Component {
   render() {
-    let classes = 'category-filter__link';
-
-    if (this.props.selected) {
-      classes += ' category-filter__link--selected';
-    }
+    const classes = classNames({
+      'category-filter__link': true,
+      'category-filter__link--selected': this.props.selected
+    });
 
     return (
       <a

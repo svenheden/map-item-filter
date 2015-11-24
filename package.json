@@ -8,7 +8,8 @@
     "node": ">=4.0"
   },
   "scripts": {
-    "build": "npm run build:js && npm run build:css",
+    "setup": "rm -rf dist && mkdir dist",
+    "build": "npm run setup && npm run build:js && npm run build:css",
     "build:js": "browserify scripts/index.js -t babelify -o dist/script.js",
     "build:css": "node-sass stylesheets -o dist",
     "watch:js": "watchify scripts/index.js -t babelify -o dist/script.js",

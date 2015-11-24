@@ -41,21 +41,33 @@ export default class Map extends Component {
   }
 
   itemIsInView(item) {
-    return this.map.getBounds().contains(new window.google.maps.LatLng(item.location.lat, item.location.lng));
+    return this.map.getBounds().contains(
+      new window.google.maps.LatLng(item.location.lat, item.location.lng)
+    );
+  }
+
+  fitMapBounds() {
+    const bounds = new window.google.maps.LatLngBounds();
+
+    this.props.items.forEach(item => {
+      bounds.extend(new window.google.maps.LatLng(item.location.lat, item.location.lng));
+    });
+
+    this.map.fitBounds(bounds);
+  }
+
+  renderMarkers() {
+    return this.props.items.map(item => (
+      <MapMarker key={item.id} location={item.location} map={this.map}/>
+    ));
   }
 
   render() {
     let markers;
 
     if (this.state.mapIsInitialized) {
-      const bounds = new window.google.maps.LatLngBounds();
-
-      markers = this.props.items.map(item => {
-        bounds.extend(new window.google.maps.LatLng(item.location.lat, item.location.lng));
-        return <MapMarker key={item.id} location={item.location} map={this.map}/>;
-      });
-
-      this.map.fitBounds(bounds);
+      markers = this.renderMarkers();
+      this.fitMapBounds();
     }
 
     return (

@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/jonathanp_/map-item-filter.git"
+    "url": "https://github.com/jonathanp/map-item-filter.git"
   },
   "author": "Jonathan Persson <persson.jonathan@gmail.com>",
   "license": "MIT",

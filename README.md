@@ -1,5 +1,7 @@
 # Map Item Filter
 
+[![Build Status][travis-image]][travis-url]
+
 This is a proof of concept of a single page application that can be used for filtering items by categories and/or by zooming and panning in a map.
 
 The goal of this project is for me to try to recreate the core of an app I wrote a couple of years ago but with different technologies and a different architecture.
@@ -25,3 +27,6 @@ The goal of this project is for me to try to recreate the core of an app I wrote
 ## License
 
 MIT © [Jonathan Persson](https://github.com/jonathanp)
+
+[travis-image]: https://travis-ci.org/jonathanp/map-item-filter.svg
+[travis-url]: https://travis-ci.org/jonathanp/map-item-filter

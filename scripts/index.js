@@ -11,8 +11,8 @@ if (!window.__DATA__) {
   console.error(new Error('The initial state from the server is missing'));
 }
 
-let store = createStore(reducers, window.__DATA__);
-let rootElement = document.getElementById('root');
+const store = (window.devToolsExtension ? window.devToolsExtension()(createStore) : createStore)(reducers, window.__DATA__);
+const rootElement = document.getElementById('root');
 
 render(
   <Provider store={store}>

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import Pill from '../components/pill';
 
-const FilterSummary = props => {
+const FilterSummary = (props) => {
   const matches = props.numberOfItems + (props.numberOfItems === 1 ? ' träff' : ' träffar');
   const hasCategory = props.category.id !== 0;
   const hasSubCategories = props.subCategories.length > 0;

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import classNames from 'classnames-minimal';
 
-const FilterButton = props => {
+const FilterButton = (props) => {
   const classes = classNames({
     'filter-button': true,
     'filter-button--active': props.active,
@@ -17,7 +17,7 @@ const FilterButton = props => {
   );
 };
 
-const handleClick = props => {
+const handleClick = (props) => {
   if (!props.disabled) {
     props.onClick(props.id, props.active);
   }

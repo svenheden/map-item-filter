@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-export const categoriesSelector = state => [{ id: 0, label: 'Alla enheter', subCategories: []}, ...state.allCategories];
-export const categoryFilterSelector = state => state.categoryFilter;
-export const subCategoryFilterSelector = state => state.subCategoryFilter;
+export const categoriesSelector = (state) => [{ id: 0, label: 'Alla enheter', subCategories: []}, ...state.allCategories];
+export const categoryFilterSelector = (state) => state.categoryFilter;
+export const subCategoryFilterSelector = (state) => state.subCategoryFilter;
 
 export const currentCategorySelector = createSelector(
   categoriesSelector,

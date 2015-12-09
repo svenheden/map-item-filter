@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'; // eslint-disable-line no-unused-vars
 import classNames from 'classnames-minimal';
 
-const CategoryFilterItem = props => {
+const CategoryFilterItem = (props) => {
   const classes = classNames({
     'category-filter__link': true,
     'category-filter__link--selected': props.selected

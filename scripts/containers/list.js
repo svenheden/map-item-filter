@@ -20,7 +20,7 @@ const ListContainer = (props) => (
   </div>
 );
 
-const handleCategoryClick = props => {
+const handleCategoryClick = (props) => {
   props.dispatch(setCategoryFilter(props.category.id));
 };
 

@@ -5,7 +5,7 @@ import {
   CLEAR_SUB_CATEGORY_FILTER
 } from '../actions/categories';
 
-export function categoryFilter(state = 0, action) {
+export const categoryFilter = (state = 0, action) => {
   switch (action.type) {
     case SET_CATEGORY_FILTER:
       return action.id;
@@ -14,9 +14,9 @@ export function categoryFilter(state = 0, action) {
     default:
       return state;
   }
-}
+};
 
-export function subCategoryFilter(state = [], action) {
+export const subCategoryFilter = (state = [], action) => {
   switch (action.type) {
     case ADD_SUB_CATEGORY_FILTER:
       return [...state, action.id];
@@ -28,4 +28,4 @@ export function subCategoryFilter(state = [], action) {
     default:
       return state;
   }
-}
+};

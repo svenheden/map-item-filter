@@ -28,14 +28,12 @@ const MapContainer = props => {
   );
 };
 
-function select(state) {
-  return {
-    category: currentCategorySelector(state),
-    subCategories: activeSubCategoriesSelector(state),
-    filteredItems: filteredItemsSelector(state),
-    visibleItems: visibleItemsSelector(state),
-    googleMapsIsLoaded: state.googleMapsIsLoaded
-  };
-}
+const select = (state) => ({
+  category: currentCategorySelector(state),
+  subCategories: activeSubCategoriesSelector(state),
+  filteredItems: filteredItemsSelector(state),
+  visibleItems: visibleItemsSelector(state),
+  googleMapsIsLoaded: state.googleMapsIsLoaded
+});
 
 export default connect(select)(MapContainer);

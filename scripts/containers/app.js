@@ -22,11 +22,9 @@ const App = props => {
   );
 };
 
-function select(state) {
-  return {
-    categories: categoriesSelector(state),
-    currentCategory: currentCategorySelector(state)
-  };
-}
+const select = (state) => ({
+  categories: categoriesSelector(state),
+  currentCategory: currentCategorySelector(state)
+});
 
 export default connect(select)(App);

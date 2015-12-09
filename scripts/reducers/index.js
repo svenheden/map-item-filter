@@ -2,13 +2,8 @@ import { combineReducers } from 'redux';
 import { categoryFilter, subCategoryFilter } from './categories';
 import { itemsVisibleInMap, googleMapsIsLoaded } from './map';
 
-function allCategories(state = []) {
-  return state;
-}
-
-function allItems(state = []) {
-  return state;
-}
+const allCategories = (state = []) => state;
+const allItems = (state = []) => state;
 
 const reducers = combineReducers({
   categoryFilter,

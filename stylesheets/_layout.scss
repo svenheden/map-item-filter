@@ -38,6 +38,7 @@ nav {
     float: right;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+    backface-visibility: hidden; // needed to solve strange repaint issue in Chrome
 }
 
 .map {

@@ -6,21 +6,19 @@ import CategoryFilter from '../components/category-filter';
 import MapContainer from '../containers/map';
 import ListContainer from '../containers/list';
 
-const App = props => {
-  return (
-    <main>
-      <nav>
-        <CategoryFilter
-          categories={props.categories}
-          currentCategory={props.currentCategory}
-          onClick={id => props.dispatch(setCategoryFilter(id))}
-        />
-      </nav>
-      <MapContainer/>
-      <ListContainer/>
-    </main>
-  );
-};
+const App = (props) => (
+  <main>
+    <nav>
+      <CategoryFilter
+        categories={props.categories}
+        currentCategory={props.currentCategory}
+        onClick={id => props.dispatch(setCategoryFilter(id))}
+      />
+    </nav>
+    <MapContainer/>
+    <ListContainer/>
+  </main>
+);
 
 const select = (state) => ({
   categories: categoriesSelector(state),

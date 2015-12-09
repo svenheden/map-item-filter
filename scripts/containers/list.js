@@ -1,4 +1,5 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { setCategoryFilter, addSubCategoryFilter, clearSubCategoryFilter } from '../actions/categories';
 import { currentCategorySelector, subCategoriesSelector } from '../selectors/categories';
@@ -6,31 +7,41 @@ import { filteredItemsSelector, visibleItemsSelector } from '../selectors/items'
 import SubCategoryFilter from '../components/sub-category-filter';
 import ItemList from '../components/item-list';
 
-const ListContainer = (props) => (
-  <div className="list-container">
-    {props.subCategories.length > 0 &&
-      <SubCategoryFilter
-        category={props.category}
-        subCategories={props.subCategories}
-        onClickCategory={() => handleCategoryClick(props)}
-        onClickSubCategory={(id, active) => handleSubCategoryClick(props, id, active)}
-      />
+class ListContainer extends Component {
+  componentDidUpdate(prevProps) {
+    if (prevProps.category.id !== this.props.category.id) {
+      ReactDOM.findDOMNode(this).scrollTop = 0;
     }
-    <ItemList items={props.googleMapsIsLoaded ? props.visibleItems : props.filteredItems}/>
-  </div>
-);
-
-const handleCategoryClick = (props) => {
-  props.dispatch(setCategoryFilter(props.category.id));
-};
-
-const handleSubCategoryClick = (props, id, active) => {
-  if (active) {
-    props.dispatch(clearSubCategoryFilter(id));
-  } else {
-    props.dispatch(addSubCategoryFilter(id));
   }
-};
+
+  handleCategoryClick() {
+    this.props.dispatch(setCategoryFilter(this.props.category.id));
+  }
+
+  handleSubCategoryClick(id, active) {
+    if (active) {
+      this.props.dispatch(clearSubCategoryFilter(id));
+    } else {
+      this.props.dispatch(addSubCategoryFilter(id));
+    }
+  }
+
+  render() {
+    return (
+      <div className="list-container">
+        {this.props.subCategories.length > 0 &&
+          <SubCategoryFilter
+            category={this.props.category}
+            subCategories={this.props.subCategories}
+            onClickCategory={() => this.handleCategoryClick()}
+            onClickSubCategory={(id, active) => this.handleSubCategoryClick(id, active)}
+          />
+        }
+        <ItemList items={this.props.googleMapsIsLoaded ? this.props.visibleItems : this.props.filteredItems}/>
+      </div>
+    );
+  }
+}
 
 const select = (state) => ({
   category: currentCategorySelector(state),

@@ -5,7 +5,7 @@ const Pill = (props) => (
     type="button"
     className="pill"
     title={props.tooltip}
-    onClick={() => props.onClick(props.id)}
+    onClick={props.onClick}
   >{props.label}</button>
 );
 

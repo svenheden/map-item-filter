@@ -14,18 +14,6 @@ class ListContainer extends Component {
     }
   }
 
-  handleCategoryClick() {
-    this.props.dispatch(setCategoryFilter(this.props.category.id));
-  }
-
-  handleSubCategoryClick(id, active) {
-    if (active) {
-      this.props.dispatch(clearSubCategoryFilter(id));
-    } else {
-      this.props.dispatch(addSubCategoryFilter(id));
-    }
-  }
-
   render() {
     return (
       <div className="list-container">
@@ -33,8 +21,8 @@ class ListContainer extends Component {
           <SubCategoryFilter
             category={this.props.category}
             subCategories={this.props.subCategories}
-            onClickCategory={() => this.handleCategoryClick()}
-            onClickSubCategory={(id, active) => this.handleSubCategoryClick(id, active)}
+            onClickCategory={this.props.onClickCategory}
+            onClickSubCategory={this.props.onClickSubCategory}
           />
         }
         <ItemList items={this.props.googleMapsIsLoaded ? this.props.visibleItems : this.props.filteredItems}/>
@@ -43,7 +31,7 @@ class ListContainer extends Component {
   }
 }
 
-const select = (state) => ({
+const mapStateToProps = (state) => ({
   category: currentCategorySelector(state),
   subCategories: subCategoriesSelector(state),
   filteredItems: filteredItemsSelector(state),
@@ -51,4 +39,9 @@ const select = (state) => ({
   googleMapsIsLoaded: state.googleMapsIsLoaded
 });
 
-export default connect(select)(ListContainer);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClickCategory: () => dispatch(setCategoryFilter(ownProps.category.id)),
+  onClickSubCategory: (id, active) => dispatch(active ? clearSubCategoryFilter(id) : addSubCategoryFilter(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);

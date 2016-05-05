@@ -12,7 +12,7 @@ const App = (props) => (
       <CategoryFilter
         categories={props.categories}
         currentCategory={props.currentCategory}
-        onClick={id => props.dispatch(setCategoryFilter(id))}
+        onClick={props.onCategoryFilterClick}
       />
     </nav>
     <MapContainer/>
@@ -20,9 +20,13 @@ const App = (props) => (
   </main>
 );
 
-const select = (state) => ({
+const mapStateToProps = (state) => ({
   categories: categoriesSelector(state),
   currentCategory: currentCategorySelector(state)
 });
 
-export default connect(select)(App);
+const mapDispatchToProps = (dispatch) => ({
+  onCategoryFilterClick: (id) => dispatch(setCategoryFilter(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

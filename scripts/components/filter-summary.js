@@ -40,7 +40,7 @@ const renderCategory = (props) => {
         id={props.category.id}
         label={props.category.label}
         tooltip={`Ta bort ${props.category.label} från filtreringen`}
-        onClick={() => props.onClickCategory()}
+        onClick={() => props.onClickCategory(props.category.id)}
       />
     );
   } else {

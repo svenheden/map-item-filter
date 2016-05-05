@@ -14,19 +14,19 @@ const MapContainer = (props) => (
       subCategories={props.subCategories}
       numberOfItems={props.googleMapsIsLoaded ? props.visibleItems.length : props.filteredItems.length}
       googleMapsIsLoaded={props.googleMapsIsLoaded}
-      onClickCategory={() => props.dispatch(clearCategoryFilter())}
-      onClickSubCategory={(id) => props.dispatch(clearSubCategoryFilter(id))}
+      onClickCategory={props.onClickCategory}
+      onClickSubCategory={props.onClickSubCategory}
     />
     {props.googleMapsIsLoaded &&
       <Map
         items={props.filteredItems}
-        onVisibleItemsChange={(items) => props.dispatch(setItemsVisibleInMap(items))}
+        onVisibleItemsChange={props.onVisibleItemsChange}
       />
     }
   </div>
 );
 
-const select = (state) => ({
+const mapStateToProps = (state) => ({
   category: currentCategorySelector(state),
   subCategories: activeSubCategoriesSelector(state),
   filteredItems: filteredItemsSelector(state),
@@ -34,4 +34,10 @@ const select = (state) => ({
   googleMapsIsLoaded: state.googleMapsIsLoaded
 });
 
-export default connect(select)(MapContainer);
+const mapDispatchToProps = (dispatch) => ({
+  onClickCategory: () => dispatch(clearCategoryFilter()),
+  onClickSubCategory: (id) => dispatch(clearSubCategoryFilter(id)),
+  onVisibleItemsChange: (items) => dispatch(setItemsVisibleInMap(items))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

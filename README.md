@@ -26,7 +26,7 @@ The goal of this project is for me to try to recreate the core of an app I wrote
 
 ## License
 
-MIT © [Jonathan Persson](https://github.com/jonathanp)
+MIT © [Jonathan Svenheden](https://github.com/svenheden)
 
-[travis-image]: https://travis-ci.org/jonathanp/map-item-filter.svg
-[travis-url]: https://travis-ci.org/jonathanp/map-item-filter
+[travis-image]: https://travis-ci.org/svenheden/map-item-filter.svg
+[travis-url]: https://travis-ci.org/svenheden/map-item-filter

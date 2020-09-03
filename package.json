@@ -28,7 +28,7 @@
     "babel-tape-runner": "2.0.1",
     "babelify": "7.3.0",
     "browserify": "13.0.0",
-    "node-sass": "3.7.0",
+    "node-sass": "4.14.1",
     "tape": "4.5.1",
     "watchify": "3.7.0"
   },
